@@ -88,7 +88,7 @@
                                         {{ __('Dashboard') }}
                                     </x-nav-link>
                                 <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/5 transition-colors group"
-                                    href="{{ route('colocation') }}">
+                                    href="{{ route('colocations.index') }}">
                                     <span class="material-symbols-outlined text-slate-500 group-hover:text-primary">
                                     apartment
                                     </span>
@@ -142,118 +142,13 @@
                         </aside>
                         <!-- Main Column -->
                         <section class="lg:col-span-9 flex flex-col gap-6">
-                            <!-- Tabs -->
-                            <div class="flex border-b border-primary/10 gap-8">
-                                <a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3"
-                                    href="#">
-                                    <p class="text-sm font-bold">Pending</p>
-                                </a>
-                                <a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 pb-3 hover:text-slate-800"
-                                    href="#">
-                                    <p class="text-sm font-bold">History</p>
-                                </a>
-                            </div>
-
                             <!-- Who Owes Who Section -->
                             <div class="flex flex-col gap-4">
                                 <h3 class="text-lg font-bold tracking-tight">Who owes who</h3>
                                 <div class="flex flex-col gap-3">
-                                    <!-- Transaction Item 1 -->
-                                    <div
-                                        class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                                        <div class="flex items-center gap-4">
-                                            <div class="flex -space-x-3">
-                                                <div class="size-10 rounded-full border-2 border-white dark:border-slate-900 overflow-hidden bg-slate-200"
-                                                    data-alt="Profile photo of Alex">
-                                                    <img alt="Alex" class="w-full h-full object-cover"
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvG01zkOsV_iH27velJvS2XI6PGuZ3JnzC7zAlxen3w7E-wmjqdvd_kPWTIdEkjpUIyYU5XYD1OrTU5pL--MFfGbMyhYosEfRTWSwkPwENAGArx6kzZyOdFsiQDTBVWm6TCwjDMtpLXkBDvE9Rpeh-HPkl_hO6zd9vvJujSN55pUc_NsMHPHEWq65IVm1yKMhsCBwLu2Fpy_uIQcXovWd9shCY3AOWw08aMAhLfQULHqEwnt6G4O-hdyc3noxWAnUdr7Y82Gv6g18" />
-                                                </div>
-                                                <div class="size-10 rounded-full border-2 border-white dark:border-slate-900 overflow-hidden bg-slate-200"
-                                                    data-alt="Profile photo of Marc">
-                                                    <img alt="Marc" class="w-full h-full object-cover"
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGjvWuvJOFCoQqHNqDzuBFwCGzJDfjE7339UnfDq-tAbLQkf_21RV2CstFb3CU2U9JP3t0t-QhpY5wA_vjSq2cCA-rEBF7mHBKCHgwWVT1rW2XRguN_r0AeI2EBllzTUr_RfWrzs-H-DRyp5W-8hOMmdhxcB6hCaromXV5rtYpXLViMSN_jMjK15LAE38bxGC_EhZZujix0j59RnycrHP4qASX_8MdX1A361XUVm_EULLptJem7vyyc2GLz7vDq_lS_Zln-SOnTRs" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm font-medium">
-                                                    <span class="font-bold">Alex</span> owes <span
-                                                        class="font-bold">Marc</span>
-                                                </p>
-                                                <p class="text-xs text-slate-500">For Fiber Internet (May)</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-6">
-                                            <p class="text-lg font-bold text-primary">€20.00</p>
-                                            <button
-                                                class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">
-                                                Settle Up
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!-- Transaction Item 2 -->
-                                    <div
-                                        class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                                        <div class="flex items-center gap-4">
-                                            <div class="flex -space-x-3">
-                                                <div class="size-10 rounded-full border-2 border-white dark:border-slate-900 overflow-hidden bg-slate-200"
-                                                    data-alt="Profile photo of Chloe">
-                                                    <img alt="Chloe" class="w-full h-full object-cover"
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkO8ML_yrQY6uXJe2PXHVQFFSjysKUGPPv0ujOvS6WRPR9yhLbeD8LEDsddVlKvAcwYMdBONMpIfq7h-fHD-Zag5A8BT9UfdsAWs40mOWPj8zm6pH3lDCkKl_x_LlMz8-o-yWff9lsT8y0qM9cxa6moDVI_k1kwuunQwFBXmtVjq75GVkd0FzkiWUJ0IxKpig4k3sCN_06QmNuLa-BIFvYOWYluqr1aokrdWrbOYbBruxtZ1pP0HjlOiek9irCjG5BVaO2EiHlo0k" />
-                                                </div>
-                                                <div class="size-10 rounded-full border-2 border-white dark:border-slate-900 overflow-hidden bg-slate-200"
-                                                    data-alt="Profile photo of Alex">
-                                                    <img alt="Alex" class="w-full h-full object-cover"
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1JQqVkKciq32_MTz_DqNlybDpOV1zd4BBgIzHH30HHngbxKmcz_TbDv_j02d6Yc7MYvkwNuy2fnbaNSpmu3eIDyviR_RWG2wmeMGbtOlwQEbxLdUyEY5e1j393rlPMh7msVPHn7HJ6Vs23GeGEWy2S5KRpyqU_oIzBuk7sZogmJhLc16D3P4eOThLaA3Fjn5WuG7ZLzStEDxyFYBFN4xkbhT-SQ6kaoHgD1XsFnUOm0wKRbzgnToWi5NlN_FdBj9ANsCNXabKjPc" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm font-medium">
-                                                    <span class="font-bold">Chloe</span> owes <span
-                                                        class="font-bold">Alex</span>
-                                                </p>
-                                                <p class="text-xs text-slate-500">For Grocery Shopping (Friday)</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-6">
-                                            <p class="text-lg font-bold text-primary">€45.00</p>
-                                            <button
-                                                class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">
-                                                Settle Up
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!-- Transaction Item 3 (Small Debt) -->
-                                    <div
-                                        class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm opacity-80">
-                                        <div class="flex items-center gap-4">
-                                            <div class="flex -space-x-3">
-                                                <div class="size-10 rounded-full border-2 border-white dark:border-slate-900 overflow-hidden bg-slate-200"
-                                                    data-alt="Profile photo of Marc">
-                                                    <img alt="Marc" class="w-full h-full object-cover"
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAswTLLoFgjyTol5-9pST_Adp5bOq8CKeLtcj-tdF9JchTsTJ_KA3WVV1gwnexq4zBnYdz4wOyuN0pbz9wP81eBL9mUHuIludH5zhI_GGZQjZg5EW6Ps0EpNmZMl7JPEMt_NIC1mY2iV5RgDT4ITYIHBsrCks9jLHH5LjKmAreg0IkCeHdv12ISm85eVeeh1TYL58QWz0pB6UPkRDQa__ilskXiabpbbIDu_abibvR-WxmnkGOkJhyd3_qgLLw58J3vowjzTzbP7tc" />
-                                                </div>
-                                                <div class="size-10 rounded-full border-2 border-white dark:border-slate-900 overflow-hidden bg-slate-200"
-                                                    data-alt="Profile photo of Chloe">
-                                                    <img alt="Chloe" class="w-full h-full object-cover"
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZQ5ypPoWsH6-5CW72oABDmI2661DJlhkAxVo6AZuZwQG-9Eke1JiRLEtuG5pRltzfsRYDcGK2muVH-cDEj83NDRECDQ6LQQaZBrwCwMJCL_QsRqoHaxhub4LAq8JINUE6TUgl52YS149QlhUa2WjwzOaUSw_SYKmR5gGhBZggSw0_5DyP8nZF0-xY3N6Q3YPFQ0ytUp1hPd-otTAXiYTIR6NW6mQSYgQ1EkiM5UCWEM8Xv9vPw2c9ld61T5cCBqw1AbctTDd-j2o" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm font-medium">
-                                                    <span class="font-bold">Marc</span> owes <span
-                                                        class="font-bold">Chloe</span>
-                                                </p>
-                                                <p class="text-xs text-slate-500">Pizza Night</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-6">
-                                            <p class="text-lg font-bold text-primary">€12.50</p>
-                                            <button
-                                                class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">
-                                                Settle Up
-                                            </button>
-                                        </div>
-                                    </div>
+
+                                     @yield('main')
+
                                 </div>
                             </div>
                             <!-- Payment Reminder -->

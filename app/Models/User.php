@@ -23,6 +23,9 @@ class User extends Authenticatable
         'role_id',
         'password',
     ];
+    public function colocation(){
+        return $this->hasMany(Colocation::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
