@@ -10,9 +10,9 @@
             <div class="flex flex-col gap-2 rounded-xl p-6 bg-primary/5 border border-primary/10">
                 <div class="flex items-center gap-2 text-primary">
                     <span class="material-symbols-outlined">trending_up</span>
-                    <p class="text-sm font-semibold uppercase tracking-wider">Total to receive</p>
+                    <p class="text-sm font-semibold uppercase tracking-wider">reputation</p>
                 </div>
-                <p class="text-3xl font-bold">$2.00</p>
+                <p class="text-3xl font-bold">2 pionts</p>
             </div>
             <div
                 class="flex flex-col gap-2 rounded-xl p-6 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20">
@@ -54,10 +54,10 @@
                         </div>
                         <div class="flex items-center gap-6">
                             <p class="text-lg font-bold text-primary">{{ $colocation->price }} DHS</p>
-                            <a href="{{ route('colocations.show', $colocation->id) }}"
+                            <!-- <a href="{{ route('colocations.index', $colocation->id) }}"
                                 class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">
                                 Join
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 @endforeach
@@ -65,11 +65,3 @@
         </div>
     </section>
 @endsection
-<!-- </div>
-</div>
-</main>
-</div>
-</div>
-</body>
-
-</html> -->

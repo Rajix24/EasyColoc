@@ -24,7 +24,7 @@
             </div> -->
             <div class="img">
                 <img src="{{ asset("storage/images/Blue Black Modern Home Stay Logo Design.png") }}" width="500px" height="auto" alt="">
-            </div>
+            </div>  
             <div class="container-login">
                 {{ $slot }}
             </div>

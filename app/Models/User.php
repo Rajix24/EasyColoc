@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
     ];
     public function colocation(){
-        return $this->hasMany(Colocation::class);
+        return $this->belongsToMany(Colocation::class);
     }
 
     /**

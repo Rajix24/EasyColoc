@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('depenses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('location');
             $table->float('price');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('colocation_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
         }else{
             $request->merge(['role_id' => 2]);
         }
-
+        // dd($request->input());
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\DepenseController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Colocation;
 use Illuminate\Support\Facades\Route;
@@ -10,9 +12,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/dashboard', function () {
-    
-    $colocations = Colocation::with('user')->get();
-    return view('colocation.show',compact('colocations'));
+    $colocations = Colocation::all();
+    return view('dashboard',compact('colocations'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -22,6 +23,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('colocations', ColocationController::class)->middleware(['auth', 'verified']);
+Route::resource('expence', DepenseController::class)->middleware(['auth' , 'verified']);
+Route::resource('categories', CategoriesController::class)->middleware(['auth', 'verified']);
 
 
 require __DIR__.'/auth.php';

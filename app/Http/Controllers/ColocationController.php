@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colocation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,10 @@ class ColocationController extends Controller
      */
     public function index()
     {
-        $colocations = Colocation::with('user')->where('user_id','=', Auth::id())->get();
+        $colocations = Colocation::whereHas('user', function ($query) {
+            $query->where('user_id', Auth::id());
+        })->get();
+        // dd($colocations);
         return view('colocation.colocation' , compact('colocations'));
     }
 
@@ -37,9 +41,8 @@ class ColocationController extends Controller
             'location' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
         ]);
-        $validation['user_id'] = auth()->id();
-        // dd($validation);
-        Colocation::create($validation);
+        $colocation  = Colocation::create($validation);
+        $colocation->user()->sync([Auth::id()]);
         return redirect()->route('dashboard');
 
     }

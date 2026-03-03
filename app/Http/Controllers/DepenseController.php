@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\depense;
+use App\Models\Colocation;
+use App\Models\Depense;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepenseController extends Controller
 {
@@ -12,15 +15,20 @@ class DepenseController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        // dd($request->input('id'));
+        // $users = Colocation::with("user")->get();
+        $colocations = Colocation::whereHas('user', function ($query) {
+        $query->where('user_id', Auth::id());
+        })->get();
+        // dd($colocations);
+        return view('expence.add', compact('colocations'));
     }
 
     /**
@@ -28,13 +36,19 @@ class DepenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'title' => 'required|string|max:255',
+            'price' => 'required',
+            'category_id' => 'required|numeric',  
+            'colocation_id' =>'required|numeric'
+        ]);
+        dd($validation);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(depense $depense)
+    public function show(Depense $depense)
     {
         //
     }
@@ -42,7 +56,7 @@ class DepenseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(depense $depense)
+    public function edit(Depense $depense)
     {
         //
     }
@@ -50,7 +64,7 @@ class DepenseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, depense $depense)
+    public function update(Request $request, Depense $depense)
     {
         //
     }
@@ -58,7 +72,7 @@ class DepenseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(depense $depense)
+    public function destroy(Depense $depense)
     {
         //
     }
