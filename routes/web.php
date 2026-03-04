@@ -4,7 +4,9 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ColocationController;
 use App\Http\Controllers\DepenseController;
 use App\Http\Controllers\ProfileController;
+use App\Mail\Email;
 use App\Models\Colocation;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,5 +28,8 @@ Route::resource('colocations', ColocationController::class)->middleware(['auth',
 Route::resource('expence', DepenseController::class)->middleware(['auth' , 'verified']);
 Route::resource('categories', CategoriesController::class)->middleware(['auth', 'verified']);
 
-
+Route::get('/testEmail', function () {
+    $name = 'younes rajix';
+    Mail::to('rajix2100@gmail.com')->send(new Email($name));
+});
 require __DIR__.'/auth.php';
