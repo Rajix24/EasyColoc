@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Type\Decimal;
 
 return new class extends Migration
 {
@@ -11,13 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('depenses', function (Blueprint $table) {
+        Schema::create('apays', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->float('price');
-            $table->integer('user_id');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->foreignId('colocation_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('colocation_id')->constrained();
+            $table->foreignId('depense_id')->constrained()->onDelete('cascade');
+            $table->enum('status', ['pay', 'not pay'])->default('not pay');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('depenses');
+        Schema::dropIfExists('apays');
     }
 };

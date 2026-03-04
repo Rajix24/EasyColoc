@@ -4,16 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Depense extends Model
+class Apay extends Model
 {
     protected $fillable = [
         'title',
         'price',
-        'category_id',
+        'colocation_id',
         'user_id',
-        'colocation_id'
+        'depense_id',
+        'status'
     ];
-    public function user (){
+    public function user() {
         return $this->belongsTo(User::class);
+    }
+    public function colocation() {
+        return $this->belongsTo(Colocation::class);
     }
 }

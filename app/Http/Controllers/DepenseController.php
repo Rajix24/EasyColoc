@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apay;
 use App\Models\Colocation;
 use App\Models\Depense;
 use App\Models\User;
@@ -38,11 +39,37 @@ class DepenseController extends Controller
     {
         $validation = $request->validate([
             'title' => 'required|string|max:255',
-            'price' => 'required',
+            'price' => 'required|numeric',
+            'user_id' => 'required',
             'category_id' => 'required|numeric',  
             'colocation_id' =>'required|numeric'
         ]);
-        dd($validation);
+        $depense = Depense::create($validation);
+        // get list of user that in colocation
+        $users = User::has('colocation', '=', 1)->get();
+        $howPay = $request->input('user_id');
+        $idOfUsers = [];
+        foreach ($users as $user) {
+            array_push($idOfUsers, $user->id);
+        }
+        //calcule price
+        $price = $validation['price']/count($idOfUsers);
+        $idOfUsers =  array_filter($idOfUsers, function($value) use ($howPay){
+            return $value != $howPay;
+        }); 
+
+        // dd($depense->id);
+        foreach ($idOfUsers as $value) {
+            $apay = Apay::create(   [
+                'title'=> $validation['title'],
+                'price' => $price,
+                'depense_id' => $depense->id,
+                'user_id' => $value,
+                'colocation_id' => $validation['colocation_id']
+            ]);
+        }
+        return redirect()->route('colocations.index');
+   
     }
 
     /**

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apay;
 use App\Models\Colocation;
+use App\Models\Depense;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class ColocationController extends Controller
 {
@@ -18,7 +21,9 @@ class ColocationController extends Controller
             $query->where('user_id', Auth::id());
         })->get();
         // dd($colocations);
-        return view('colocation.colocation' , compact('colocations'));
+        $apay = Apay::with('user', 'colocation')->get();
+        // dd($apay[0]->user->name);
+        return view('colocation.colocation' , compact('apay', 'colocations'));
     }
 
     /**
@@ -39,7 +44,7 @@ class ColocationController extends Controller
             'title' => 'required|string|max:255',
             'discription' => 'required|string|min:10',
             'location' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:100',
         ]);
         $colocation  = Colocation::create($validation);
         $colocation->user()->sync([Auth::id()]);
